@@ -1,0 +1,80 @@
+/*@media (min-width: 100px) {
+    body {
+      background: #222222
+    }
+}
+
+@media (min-width: 700px) {
+    body {
+      background-image: url("/books_bg.jpg");
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+}
+
+@media (min-width: 1300px) {
+    body {
+      background-image: url("/library.jpg");
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+}*/
+
+
+
+body {
+  background: linear-gradient(to top left, #454d54 7%, #1b1819 100%);
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table th {
+    text-align: center;
+}
+
+.table-4-col td{
+    width:25%;
+}
+
+.table-grey {
+    color: #fff;
+    background-color: #3e444a;
+}
+
+.light-grey {
+    background: linear-gradient(to bottom right, #e3e6e8 7%, #b9c0c6 100%);
+}
+
+.table-dark {
+  color: #fff;
+  background-color: #3e444a;
+
+  th,
+  td,
+  thead th {
+    border-color: $table-dark-border-color;
+  }
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  &.table-striped {
+    tbody tr:nth-of-type(#{$table-striped-order}) {
+      background-color: $table-dark-accent-bg;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      @include hover() {
+        color: $table-dark-hover-color;
+        background-color: $table-dark-hover-bg;
+      }
+    }
+  }
+}
