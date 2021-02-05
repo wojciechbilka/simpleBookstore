@@ -3,17 +3,13 @@ package com.bookstore.service;
 import com.bookstore.model.Book;
 import com.bookstore.repository.BookRepository;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @Data
-@RequiredArgsConstructor
 public class BookService {
 
     private final BookRepository bookRepository;
