@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <!--Bootstrap dependencies-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -30,6 +30,7 @@
                 <th>Tittle</th>
                 <th>Author</th>
                 <th>Availability</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Borrower id</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -39,33 +40,30 @@
                 <td class="action-td" th:text="${book.author}"></td>
                 <td class="action-td" th:if="${book.available}">Available</td>
                 <td class="action-td" th:unless="${book.available}">Not available</td>
-                <!--TODO Add check for user id vs borrower id-->
-                <td class="action-td" th:text="${book.borrower?.id}">Not available</td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')" class="action-td" th:text="${book.borrower?.id}">Not borrowed</td>
                 <td class="action-td">
                     <div class="container btn-group">
-                        <form method="post" action="#" th:action="@{/shelf/editBook}">
+                        <form class="mr-1" method="post" action="#" th:action="@{/editBook}">
                             <input type="hidden" th:name="book_id" th:value="${book.id}">
                             <input type="submit" class="btn btn-dark" value="Edit">
                         </form>
-                        <form method="post" action="#" th:action="@{/shelf/deleteBook}">
+                        <form class="mr-1" method="post" action="#" th:action="@{/deleteBook}">
                             <input type="hidden" th:name="book_id" th:value="${book.id}">
                             <input type="submit" class="btn btn-danger" value="Delete">
                         </form>
-                        <form method="post" action="#" th:action="@{/shelf/reserveBook}">
+                        <form class="mr-1" method="post" action="#" th:action="@{/confirmReturnBook}">
                             <input type="hidden" th:name="book_id" th:value="${book.id}">
-                            <input type="submit" class="btn btn-dark" value="Reserve Book">
+                            <input type="submit" class="btn btn-dark" value="Confirm return">
                         </form>
-                        <!--TODO add return/reserve/submit_return according to current user and base on borrower id-->
-                        <!--<form th:if="${book.borrower?.id == }" method="post" action="#" th:action="@{/shelf/return}">
-                            <input type="hidden" th:name="book_id" th:value="${book.id}">
-                            <input type="submit" class="btn btn-dark" value="Retu">
-                        </form>-->
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+<!--<div sec:authentication="principal">
+
+</div>-->
 <div class="container my-1">
     <form method="post" action="#" th:action="@{addBook}">
         <input type="submit" class="btn btn-secondary" value="Add Book">
