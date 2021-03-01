@@ -16,4 +16,8 @@ public class PersonService {
     public List<Person> getAll() {
         return personRepository.findByOrderByNameDesc();
     }
+
+    public Person getById(Long id) {
+        return personRepository.findById(id).orElse(new Person());
+    }
 }
