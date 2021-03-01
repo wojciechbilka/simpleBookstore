@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -22,11 +21,14 @@ public class Book {
     private String tittle;
     private String author;
     private boolean available;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime borrowingDate;
     @ManyToOne
-    @JoinColumn(name = "personID")
+    @JoinColumn(name = "person_id")
     @ToString.Exclude
     private Person borrower;
 
+    public boolean isBorrowed() {
+        return borrower != null;
+    }
 }
