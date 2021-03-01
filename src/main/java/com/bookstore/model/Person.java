@@ -18,11 +18,16 @@ public class Person {
     private long id;
     private String name;
     private String lastName;
-    private String address;
     private String phoneNumber;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+    private String email;
     @OneToMany(
             mappedBy = "borrower",
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
     )
     private List<Book> books;
+
 }
