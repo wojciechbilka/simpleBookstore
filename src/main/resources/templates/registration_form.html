@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!--Bootstrap dependencies-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+<!--Custom styles-->
+<link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<title>Book Form</title>
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:replace="/fragments/menu_bar.html :: div.menu-bar"></div>
+
+<div class="container">
+    <div class="form-group border rounded p-2 m-4 light-grey">
+        <h2>Book Form</h2>
+        <!--TODO Separate form to sections-->
+        <form action="#" th:action="@{/saveUserBookstore}" th:object="${userBookstore}" method="post">
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{person.name}" placeholder="First Name"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('name')}" th:errors="*{person.name}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" th:field="*{person.lastName}" placeholder="Last Name"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('lastName')}" th:errors="*{person.lastName}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" th:field="*{person.phoneNumber}" placeholder="Phone Number"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{person.phoneNumber}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" th:field="*{person.email}" placeholder="Email"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('email')}" th:errors="*{person.email}"/>-->
+            </div>
+
+            <div class="form-group">
+                <label for="addressCity">City</label>
+                <input type="text" class="form-control" id="addressCity" th:field="*{person.address.city}" placeholder="City"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('city')}" th:errors="*{person.address.city}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="addressZipCode">ZIP Code</label>
+                <input type="text" class="form-control" id="addressZipCode" th:field="*{person.address.zipCode}" placeholder="ZIP Code"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{person.address.zipCode}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input type="text" class="form-control" id="street" th:field="*{person.address.street}" placeholder="Street"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('street')}" th:errors="*{person.address.street}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="addressApartmentNumber">Apartment number</label>
+                <input type="text" class="form-control" id="addressApartmentNumber" th:field="*{person.address.apartmentNumber}" placeholder="Apartment number"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('apartmentNumber')}" th:errors="*{person.address.apartmentNumber}"/>-->
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" th:field="*{id}">
+                <label for="username">username</label>
+                <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="username"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"/>-->
+            </div>
+            <div class="form-group">
+                <label for="password">username</label>
+                <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="password"
+                       th:errorclass="is-invalid">
+                <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/>-->
+            </div>
+            <br>
+            <input type="submit" th:value="Save" class="btn btn-info">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
