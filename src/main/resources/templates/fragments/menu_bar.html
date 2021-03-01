@@ -6,12 +6,12 @@
                     <a class="nav-link" href="#">icon space</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/business/createTest">Books</a>
+                    <a class="nav-link" href="/">Books</a>
                 </li>
             </ul>
         </div>
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="/business/">easeTest/Business</a>
+            <a class="navbar-brand mx-auto" href="/">BookStore</a>
         </div>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto" sec:authorize="!isAuthenticated()">
@@ -26,7 +26,10 @@
                 <!--TODO if only settings button on left take out of collapse menu-->
             </ul>
             <ul class="navbar-nav ml-auto" sec:authorize="hasRole('ROLE_USER')">
-                <li class="nav-item">
+                <li th:if="${booksCount != null}" class="nav-item mr-3">
+                    <a href="/myBooks" class="nav-item nav-link" th:text="${booksCount} + ' books borrowed'">books</a>
+                </li>
+                <li class="nav-item mr-2">
                     <a href="/" class="btn btn-secondary">Back to main page</a>
                 </li>
                 <li class="nav-item">
