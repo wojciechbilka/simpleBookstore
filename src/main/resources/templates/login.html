@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <!--Bootstrap dependencies-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!--Custom styles-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:replace="/fragments/menu_bar.html :: div.menu-bar"></div>
+        <!--<div th:replace="fragments/menu_bar.html :: div.menu-bar"></div>
+        <div class="container">
+            <h1>Login page</h1>
+            <p th:if="${loginError}" class="error">Wrong user or password</p>
+            <form th:action="@{/login}" method="post">
+                <label for="username">Username</label>:
+                <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+                <label for="password">Password</label>:
+                <input type="password" id="password" name="password" /> <br />
+                <input type="checkbox" id="remember-me" name="remember-me" /> <br />
+                <input type="submit" value="Log in" />
+            </form>
+        </div>-->
+        <div class="d-flex justify-content-center mx-auto my-auto">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <!-- Tabs Titles -->
+
+                    <!-- Icon -->
+                    <div calss="d-flex flex-row my-auto">
+                        <div class="d-flex justify-content-center mx-auto my-auto">
+                            <img src="/images/books-stack-of-three-bigger.png" id="icon" alt="User Icon" />
+                        </div>
+                        <div class="d-flex justify-content-center mx-auto my-auto">
+                            <h5 class="card-title">Welcome to Bookstore</h5>
+                        </div>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group mb-2">
+                            <label for="username">Login</label>
+                            <input type="text" class="form-control input-lg" id="username" name="username" placeholder="login">
+                            <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('email')}" th:errors="*{person.email}"/>-->
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control input-lg" id="password" name="password" placeholder="password">
+                            <!--<p class="text-danger mb-10" th:if="${#fields.hasErrors('email')}" th:errors="*{person.email}"/>-->
+                        </div>
+                        <div class="d-flex justify-content-center py-3">
+                            <input type="submit" class="btn btn-dark btn-lg" value="Log In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mx-auto my-auto">
+
+        </div>
+        <footer class="footer mt-3 py-3 bg-white">
+            <div class="container">
+                <span class="text-muted">Bookstore.com</span>
+            </div>
+        </footer>
+    </body>
+</html>
